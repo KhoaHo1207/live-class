@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
+import connectDB from "./config/database.js";
 const app = express();
 
 const PORT = process.env.PORT || 8000;
@@ -16,6 +17,8 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+connectDB();
 
 app.get("/", (req, res) => {
   res.send("Hello World");
